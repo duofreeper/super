@@ -1,0 +1,342 @@
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #272727;
+            font-family: 'Roboto';
+        }
+        
+        .wrapper {
+            width: 200px;
+            height: 60px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .circle {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            border-radius: 50%;
+            background-color: #fff;
+            left: 15%;
+            transform-origin: 50%;
+            animation: circle .5s alternate infinite ease;
+        }
+        
+        @keyframes circle {
+            0% {
+                top: 60px;
+                height: 5px;
+                border-radius: 50px 50px 25px 25px;
+                transform: scaleX(1.7);
+            }
+            40% {
+                height: 20px;
+                border-radius: 50%;
+                transform: scaleX(1);
+            }
+            100% {
+                top: 0%;
+            }
+        }
+        
+        .circle:nth-child(2) {
+            left: 45%;
+            animation-delay: .2s;
+        }
+        
+        .circle:nth-child(3) {
+            left: auto;
+            right: 15%;
+            animation-delay: .3s;
+        }
+        
+        .shadow {
+            width: 20px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, .5);
+            position: absolute;
+            top: 62px;
+            transform-origin: 50%;
+            z-index: -1;
+            left: 15%;
+            filter: blur(1px);
+            animation: shadow .5s alternate infinite ease;
+        }
+        
+        @keyframes shadow {
+            0% {
+                transform: scaleX(1.5);
+            }
+            40% {
+                transform: scaleX(1);
+                opacity: .7;
+            }
+            100% {
+                transform: scaleX(.2);
+                opacity: .4;
+            }
+        }
+        
+        .shadow:nth-child(4) {
+            left: 45%;
+            animation-delay: .2s
+        }
+        
+        .shadow:nth-child(5) {
+            left: auto;
+            right: 15%;
+            animation-delay: .3s;
+        }
+        
+        .wrapper span {
+            position: absolute;
+            top: 75px;
+            font-family: 'Roboto';
+            font-size: 20px;
+            letter-spacing: 12px;
+            color: #fff;
+            left: 6px;
+            text-align: center;
+        }
+        
+         ::-webkit-scrollbar {
+            width: 0;
+        }
+        
+        #scrollPath {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        #progressbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10px;
+            background: linear-gradient(to top, #1190ff, #2dffea);
+            animation: rgbbar 5s linear infinite;
+        }
+        
+        #progressbar:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #008aff, #00ffe7);
+            filter: blur(10px);
+        }
+        
+        #progressbar:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #008aff, #00ffe7);
+            filter: blur(30px);
+        }
+        
+        .loader {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(46, 46, 46, 0.952);
+            position: fixed;
+            top: 0;
+            z-index: 200000;
+            clip-path: circle(250.0% at 50% 50%);
+            transition: clip-path 1s ease-in-out;
+        }
+        
+        .loader2 {
+            clip-path: circle(0% at 50% 50%);
+        }
+        
+        .box {
+            width: 400px;
+            float: top;
+            padding: 50px;
+            top: 520px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #3498db;
+            border-radius: 7px;
+            box-shadow: 20px 20px 8px 10px rgba(0, 0, 0, 0.1);
+            background: #191919;
+            align-items: Left;
+            text-align: Left;
+            white-space: 1px;
+        }
+        
+        .titulo {
+            color: #fff;
+            font-size: 40px;
+            font-weight: 500;
+        }
+        
+        .box input[type="text"],
+        .box input[type="password"],
+        .box input[type="number"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 3px;
+            padding: 15px 10px;
+            border: 2px solid #3498db;
+            width: 420px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            background: #191919;
+        }
+        
+        .box input[type="text"]:focus,
+        .box input[type="password"]:focus,
+        .box input[type="number"]:focus {
+            width: 430px;
+            border-color: #99cdf0;
+            background: #424242;
+        }
+        
+        .box input[type="submit"] {
+            border: 0;
+            background: none;
+            top: 41%;
+            display: block;
+            margin: 20px auto;
+            padding: 15px 130px;
+            border: 2px solid #3498db;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            background: #191919;
+            cursor: pointer;
+            font-family: 'Roboto';
+        }
+        
+        .box input[type="submit"]:hover {
+            background: #3a3a3a;
+            border: 2px solid #6eb3e0;
+        }
+        
+        .box label {
+            font-family: 'Roboto';
+            color: #fff;
+            text-align: left;
+        }
+        
+        .btn input[type="button"] {
+            border: 0;
+            background: none;
+            position: absolute;
+            top: 2px;
+            display: block;
+            margin: 20px auto;
+            padding: 15px 80px;
+            border: 2px solid #3498db;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.55s;
+            background: #191919;
+            cursor: pointer;
+            font-family: 'Roboto';
+        }
+        
+        .btn input[type="button"]:hover {
+            background: #3c4a57;
+            border: 3px solid #6eb3e0;
+        }
+        
+        .btn1 {
+            left: 520px;
+        }
+        
+        .btn2 {
+            right: 520px;
+        }
+        
+        .espacio {
+            height: 20px;
+        }
+    </style>
+    <title>
+        Insertar Datos
+    </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+    <div class="loader" id="loader">
+        <div class="wrapper">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <span>CARGANDO REGISTRO DE DATOS</span>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    </div>
+
+    <form class="box" action="insertarres.php" method="post">
+        <h1 class="titulo">Ingresa Los datos</h1>
+        <label>Clave </label><input required type="number" min="1" max="999" name="clave_empleado" placeholder="Numero de registro"><br>
+        <label>Nombre(s)</label><input required type="text" size="25" name="nombre" maxlength="20" minlength="3" placeholder="Nombre(s)"><br>
+        <label>Apellido Paterno</label><input required maxlength="16" type="text" size="20" name="APPAT" placeholder="Apellido Paterno"><br>
+        <label>Apellido Materno</label><input required maxlength="16" type="text" size="23" name="APMAT" placeholder="Apellido Materno"><br>
+        <label>Telefono</label><input required minlength="7" maxlength="7" type="number" size="20" name="telefono" placeholder="(000-0000)"><br>
+        <label>Domicilio</label><input required minlength="8" maxlength="30" type="text" size="15" name="domicilio" placeholder="Domicilio"><br>
+        <label>Sueldo</label><input required maxlength="6" min="500" max="99999" type="number" size="20" name="sueldo_semanal" placeholder="Sueldo Semanal"><br>
+        <hr>
+        <input type="submit" value="Insertar Registro">
+        <a class="btn" href="menu.html">
+            <input class="btn1" type="button" value="Regresar al menu">
+        </a>
+        <a class="btn" href="base.php">
+            <input class="btn2" type="button" value="Revisar Base">
+        </a>
+    </form>
+    <script src="main.js"></script>
+    <script type="text/javascript">
+        let progress = document.getElementById('progressbar');
+        let totalHeiht = document.body.scrollHeight - window.innerHeight;
+        window.onscroll = function() {
+            let progressHeight = (window.pageYOffset / totalHeiht) * 100;
+            progress.style.height = progressHeight + "%";
+        }
+    </script>
+</body>
+
+</html>
